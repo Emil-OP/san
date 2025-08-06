@@ -1,20 +1,13 @@
 <?php
-$nombre = $_POST['nombre'];
-$apellido = $_POST['apellido'];
-$numeroTelefono = $_POST['numeroTelefono'];
-$direccion = $_POST['direccion'];
-
-$host = "localhost";
-$dbUser = "root"; 
-$dbPassword = "root";
-$dbName = "test";
-
-$connection = mysqli_connect($host, $dbUser, $dbPassword, $dbName);
-
-if(mysqli_connect_error()){
-    die("Connection failed: " . mysqli_connect_error());
-} else {
+include 'connection.php';
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    
+    $nombre = $_POST['nombre'];
+    $apellido = $_POST['apellido'];
+    $numeroTelefono = $_POST['numeroTelefono'];
+    $direccion = $_POST['direccion'];
     $select = "SELECT telefono FROM cliente WHERE telefono = ? LIMIT 1";
+    
     $stmt = $connection ->prepare($select);
     $stmt->bind_param("s", $numeroTelefono);
     $stmt->execute();
