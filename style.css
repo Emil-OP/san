@@ -24,9 +24,18 @@ body{
     height: 100vh;
 }
 
-.formContainer{
+.flexRow{
     display: flex;
+    flex-direction: row;
+
+}
+
+.flexColumn{
+    display:flex;
     flex-direction: column;
+}
+
+.formContainer{
     align-items: center;
     justify-content: center;
     max-width: 20rem;
@@ -109,4 +118,21 @@ body{
 
 .formField:focus-within{
     transform:scale(1.1,1.1);
+}
+
+.sideBar{
+    border:red solid 1px;
+    position:fixed;
+    top:0;
+    left:0;
+    width: 20rem;
+    height:100vh;
+    padding: 1rem;
+}
+
+.sideBarItem :first-child{
+    position: relative;
+    top:-0.25rem;
+    border:yellow solid 1px;
+    margin:0 2.5rem;
 }
