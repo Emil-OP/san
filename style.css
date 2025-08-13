@@ -121,6 +121,10 @@ body{
     padding: 3rem 0 ;
     box-shadow: 0.5rem 0.3rem 0.4rem 0.2rem rgba(0, 0, 0, 0.2);
     transition: all 0.3s ease;
+
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 
 .sideBar:focus-within{
@@ -135,6 +139,7 @@ body{
     position: relative;
     top:-0.25rem;
     margin:0 2.5rem 1rem;
+    cursor:pointer;
 }
 
 .sideBarBtn:focus .sideBarLabel{
@@ -152,6 +157,7 @@ body{
     padding: 1rem 1.5rem 0;
     margin: 0.2em 0;
     transition: all 0.3s ease;
+    cursor:pointer;
 }
 
 .sideBarItem :first-child{
