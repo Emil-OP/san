@@ -89,14 +89,48 @@ body{
     text-align: center;
     color:var(--primary-color)
 }
+
+.gridRow{
+    display: grid;
+    grid-template-columns: repeat(6, minmax(10rem, 1fr));
+    width:100%;
+    padding: 1rem;
+}
+
+.gridTable{
+    border:solid 1px var(--accent-color);
+    border-radius: 1rem;
+    overflow:hidden;
+}
+
+.gridTableHeader{
+    background-color: var(--accent-color);
+    font-weight: bolder;
+}
+
+.gridTableHeaderItem{
+    background-color: inherit;
+}
+
 .sideBar{
-    border:red solid 1px;
-    position:fixed;
+    position:absolute;
     top:0;
     left:0;
-    width: 20rem;
+    width: 6rem;
     height:100vh;
-    padding: 3rem 0;
+    padding: 3rem 0 ;
+    box-shadow: 0.5rem 0.3rem 0.4rem 0.2rem rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
+
+.sideBarBtn{
+    position: relative;
+    top:-0.25rem;
+    margin:0 2.5rem 1rem;
+}
+
+.sideBarBtn:focus ~.sideBar {
+    width:20rem;
 }
 
 .sideBarIcon{
@@ -107,24 +141,26 @@ body{
     background-color: none;
     width:100%;
     height:3em;
-    padding: 0.5rem 1.5rem;
+    padding: 1rem 1.5rem 0;
+    margin: 0.2em 0;
     transition: all 0.3s ease;
 }
 
 .sideBarItem :first-child{
     position: relative;
     top:-0.25rem;
+    margin:0 1rem;
 }
 
 .sideBarItem:focus{
     background-color: var(--primary-color);
-
     border-top-left-radius: 1.5rem;
     border-bottom-left-radius: 1.5rem;
 }
 
 .sideBarLabel{
     background-color: rgba(0,0,0,0);
+    display:none;
 }
 
 .txtField{

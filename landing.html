@@ -9,24 +9,52 @@
     </head>
     <body>
         <div class="container flexRow">
+
+            <!-- Sidebar -->
             <div class="sideBar flexColumn">
-                <div class="sideBarItem flexRow" id="menuButton" tabIndex="1">
+                <div class="sideBarBtn" id="menuButton" tabIndex="0">
                     <i class="material-icons sideBarIcon">menu</i>
+                </div>
+                <div class="sideBarItem flexRow"  tabIndex="1">
+                    <i class="material-icons sideBarIcon">savings</i>
                     <div class="sideBarLabel">
-                        SAN PIM
+                        San
                     </div>
                 </div>
                 <div class="sideBarItem flexRow" tabIndex="2">
-                    <i class="material-icons sideBarIcon">savings</i>
-                    <div class="sideBarLabel">
-                        Sanes
-                    </div>
-                </div>
-                <div class="sideBarItem flexRow" tabIndex="3">
                     <i class="material-icons sideBarIcon">groups</i>
                     <div class="sideBarLabel">
                         Clientes
+                    </div>
+                </div>
+                <div class="sideBarItem flexRow" tabIndex="3">
+                    <i class="material-icons sideBarIcon">attach_money</i>
+                    <div class="sideBarLabel">
+                        Pagos
                     </div>               
+                </div>
+            </div>
+
+            <!-- Main Content -->
+            <div class="mainContent flexColumn">
+                <div class = "gridTable">
+                    <div class="gridRow gridTableHeader">
+                        <div class="gridTableHeaderItem">Nombre</div>
+                        <div class="gridTableHeaderItem">Apellido</div>
+                        <div class="gridTableHeaderItem">Telefono</div>
+                        <div class="gridTableHeaderItem">Sanes</div>
+                        <div class="gridTableHeaderItem">Credito</div>
+                        <div class="gridTableHeaderItem">Ubicacion</div>
+                    </div>
+                    
+                    <div class="gridRow gridTableRow">
+                        <div class="gridTableItem">Emil</div>
+                        <div class="gridTableItem">Olivares</div>
+                        <div class="gridTableItem">8294712884</div>
+                        <div class="gridTableItem">2</div>
+                        <div class="gridTableItem">$43.27</div>
+                        <div class="gridTableItem">Santiago</div>
+                    </div>
                 </div>
             </div>
         </div>
