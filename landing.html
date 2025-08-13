@@ -47,13 +47,28 @@
                         <div class="gridTableHeaderItem">Ubicacion</div>
                     </div>
                     
-                    <div class="gridRow gridTableRow">
-                        <div class="gridTableItem">Emil</div>
+                    <div class="gridRow gridTableRow" id="tableClientes">
+                        <script>
+                            fetch('selectCliente.php')
+                            .then(res => res.json())
+                            .then(data=>{
+                                const tbl = document.getElementById("tableClientes");
+                                data.forEach(cliente => {
+                                    tbl.innerHTML+='<div class="gridTableItem">${cliente.nombre}</div>';
+                                    tbl.innerHTML+='<div class="gridTableItem">${cliente.apellido}</div>';
+                                    tbl.innerHTML+='<div class="gridTableItem">${cliente.telefono}</div>';
+                                    tbl.innerHTML+='<div class="gridTableItem">${cliente.direccion}</div>';
+                                });
+                                }
+                            )
+                            .catch(err => console.error('Error cargando clientes:', err));
+                        </script>
+                        <!-- <div class="gridTableItem">Emil</div>
                         <div class="gridTableItem">Olivares</div>
                         <div class="gridTableItem">8294712884</div>
                         <div class="gridTableItem">2</div>
                         <div class="gridTableItem">$43.27</div>
-                        <div class="gridTableItem">Santiago</div>
+                        <div class="gridTableItem">Santiago</div> -->
                     </div>
                 </div>
             </div>
