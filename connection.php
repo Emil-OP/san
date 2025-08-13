@@ -2,7 +2,7 @@
 $host = "localhost";
 $dbUser = "root"; 
 $dbPassword = "";
-$dbName = "test";
+$dbName = "sanDB";
 $port = 5222;
 
 $connection = mysqli_connect($host, $dbUser, $dbPassword, $dbName, $port);
