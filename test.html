@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css"/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"/>
+    <title>Clientes</title>
+</head>
+<body>
+    <div class="container flexRow">
+        <!-- Sidebar -->
+        <div class="sideBar flexColumn">
+            <div class="sideBarBtn" id="menuButton" tabindex="0">
+                <i class="material-icons sideBarIcon">menu</i>
+            </div>
+            <div class="sideBarItem flexRow" tabindex="1">
+                <i class="material-icons sideBarIcon">savings</i>
+                <div class="sideBarLabel">San</div>
+            </div>
+            <div class="sideBarItem flexRow active" tabindex="2">
+                <i class="material-icons sideBarIcon">groups</i>
+                <div class="sideBarLabel">Clientes</div>
+            </div>
+            <div class="sideBarItem flexRow" tabindex="3">
+                <i class="material-icons sideBarIcon">attach_money</i>
+                <div class="sideBarLabel">Pagos</div>               
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="mainContent flexColumn">
+            <div class="gridTable">
+                <div class="gridRow gridTableHeader">
+                    <div class="gridTableHeaderItem">Nombre</div>
+                    <div class="gridTableHeaderItem">Apellido</div>
+                    <div class="gridTableHeaderItem">Teléfono</div>
+                    <div class="gridTableHeaderItem">Sanes</div>
+                    <div class="gridTableHeaderItem">Crédito</div>
+                    <div class="gridTableHeaderItem">Ubicación</div>
+                </div>
+                
+                <div class="gridTableBody" id="tableClientes">
+                    <!-- Loading indicator -->
+                    <div class="loading">Cargando clientes...</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+     fetch('selectCliente.php')
+  .then(res => res.json())
+  .then(data => {
+    if (!data.success) throw new Error(data.error);
+    
+    const tableBody = document.getElementById("tableClientes");
+    tableBody.innerHTML = data.data.map(cliente => `
+      <div class="gridRow">
+        <div class="gridTableItem">${cliente.nombre}</div>
+        <div class="gridTableItem">${cliente.apellido}</div>
+        <div class="gridTableItem">${cliente.numeroTelefono}</div>
+        <div class="gridTableItem">${cliente.sanesActivos}</div>
+        <div class="gridTableItem">$${parseFloat(cliente.credito).toFixed(2)}</div>
+        <div class="gridTableItem">${cliente.direccion}</div>
+      </div>
+    `).join('');
+  })
+  .catch(err => {
+    console.error(err);
+    document.getElementById("tableClientes").innerHTML = `
+      <div class="error">${err.message}</div>
+    `;
+  });
+    </script>
+</body>
+</html>
