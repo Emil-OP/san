@@ -10,6 +10,15 @@
     <body>
         <div class="container flexRow">
 
+            <!-- Header -->
+
+            <div class="header flexRow">
+                <div class="headerTitle">Clientes</div>
+                <div class="headerBtn" id="addButton" tabIndex="0">
+                    <i class="material-icons headerIcon">add</i>
+                </div>
+            </div>
+
             <!-- Sidebar -->
             <div class="sideBar flexColumn">
                 <div class="sideBarBtn" id="menuButton" tabIndex="0">
@@ -47,31 +56,36 @@
                         <div class="gridTableHeaderItem">Ubicacion</div>
                     </div>
                     
-                    <div class="gridRow gridTableRow" id="tableClientes">
-                        <script>
-                            fetch('selectCliente.php')
-                            .then(res => res.json())
-                            .then(data=>{
-                                const tbl = document.getElementById("tableClientes");
-                                data.forEach(cliente => {
-                                    tbl.innerHTML+='<div class="gridTableItem">${cliente.nombre}</div>';
-                                    tbl.innerHTML+='<div class="gridTableItem">${cliente.apellido}</div>';
-                                    tbl.innerHTML+='<div class="gridTableItem">${cliente.telefono}</div>';
-                                    tbl.innerHTML+='<div class="gridTableItem">${cliente.direccion}</div>';
-                                });
-                                }
-                            )
-                            .catch(err => console.error('Error cargando clientes:', err));
-                        </script>
-                        <!-- <div class="gridTableItem">Emil</div>
-                        <div class="gridTableItem">Olivares</div>
-                        <div class="gridTableItem">8294712884</div>
-                        <div class="gridTableItem">2</div>
-                        <div class="gridTableItem">$43.27</div>
-                        <div class="gridTableItem">Santiago</div> -->
+                    <div class="gridTableBody" id="tableClientes">
+                        
+                    <div class="loading">Cargando clientes...</div>
                     </div>
                 </div>
             </div>
         </div>
+        <script>
+            fetch('selectCliente.php')
+            .then(res => res.json())
+            .then(data => {
+                if (!data.success) throw new Error(data.error);
+                const tableBody = document.getElementById("tableClientes");
+                tableBody.innerHTML = data.data.map(cliente => `
+                <div class="gridRow">
+                    <div class="gridTableItem">${cliente.nombre}</div>
+                    <div class="gridTableItem">${cliente.apellido}</div>
+                    <div class="gridTableItem">${cliente.numeroTelefono}</div>
+                    <div class="gridTableItem">${cliente.sanesActivos}</div>
+                    <div class="gridTableItem">$${parseFloat(cliente.credito).toFixed(2)}</div>
+                    <div class="gridTableItem">${cliente.direccion}</div>
+                </div>
+                `).join('');
+            })
+            .catch(err => {
+                console.error(err);
+                document.getElementById("tableClientes").innerHTML = `
+                    <div class="error">${err.message}</div>
+                `;
+            });
+        </script>
     </body>
 </html>

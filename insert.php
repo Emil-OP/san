@@ -16,7 +16,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if($rnum==0){
         $stmt->close();
-        $query = "INSERT INTO cliente (nombre, apellido, telefono, direccion) VALUES (?, ?, ?, ?)";
+        $query = "INSERT INTO participante (nombre, apellido, telefono, direccion) VALUES (?, ?, ?, ?)";
         $stmt = $connection->prepare($query);
         $stmt->bind_param("ssss", $nombre, $apellido, $numeroTelefono, $direccion);
         $stmt->execute();

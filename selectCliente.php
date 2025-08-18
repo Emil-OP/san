@@ -1,11 +1,19 @@
 <?php
+
+header('Content-Type: application/json');
 include 'connection.php';
-$sqlSel = "SELECT * cliente";
+
+$response = ['success' => false, 'data' => []];
+
+$sqlSel = "SELECT * FROM participante";
 $result = $connection ->query($sqlSel);
 
-$clientes = [];
 
 while($row = $result->fetch_assoc()){
-    $clientes = $row
+    $response['data'][] = array_map('utf8_encode', $row);
 }
+    $response['success'] = true;
+    echo json_encode($response, JSON_UNESCAPED_UNICODE);
+
+$connection->close();
 ?>
