@@ -8,41 +8,60 @@
         <title>Document</title>
     </head>
     <body>
-        <div class="container flexRow">
+        <!-- Header -->
+        <div class="header flexRow">
+            <div class="material-icons headerBtn" id="menuBtn" tabIndex="0">menu</div>
+            <div class="headerTitle">Clientes</div>
+            <div class="material-icons headerBtn" id="searchBtn" tabIndex="1">search</div>
 
-            <!-- Header -->
-
-            <div class="header flexRow">
-                <div class="headerTitle">Clientes</div>
-                <div class="headerBtn" id="addButton" tabIndex="0">
-                    <i class="material-icons headerIcon">add</i>
-                </div>
-            </div>
-
-            <!-- Sidebar -->
-            <div class="sideBar flexColumn">
-                <div class="sideBarBtn" id="menuButton" tabIndex="0">
-                    <i class="material-icons sideBarIcon">menu</i>
-                </div>
-                <div class="sideBarItem flexRow"  tabIndex="1">
+            <div class="sideBar flexColumn" id="sideBar">
+                
+                <div class="sideBarItem flexRow"  tabIndex="2">
                     <i class="material-icons sideBarIcon">savings</i>
                     <div class="sideBarLabel">
                         San
                     </div>
                 </div>
-                <div class="sideBarItem flexRow" tabIndex="2">
+                <div class="sideBarItem flexRow" id="clientesBtn" tabIndex="3">
                     <i class="material-icons sideBarIcon">groups</i>
                     <div class="sideBarLabel">
                         Clientes
                     </div>
                 </div>
-                <div class="sideBarItem flexRow" tabIndex="3">
+                <div class="sideBarItem flexRow" tabIndex="4">
                     <i class="material-icons sideBarIcon">attach_money</i>
                     <div class="sideBarLabel">
                         Pagos
                     </div>               
                 </div>
             </div>
+        </div>
+
+        <!-- Container -->
+        <div class="container flexRow">
+
+            <!-- Sidebar -->
+            <!-- <div class="sideBar flexColumn">
+                
+                <div class="sideBarItem flexRow"  tabIndex="2">
+                    <i class="material-icons sideBarIcon">savings</i>
+                    <div class="sideBarLabel">
+                        San
+                    </div>
+                </div>
+                <div class="sideBarItem flexRow" tabIndex="3">
+                    <i class="material-icons sideBarIcon">groups</i>
+                    <div class="sideBarLabel">
+                        Clientes
+                    </div>
+                </div>
+                <div class="sideBarItem flexRow" tabIndex="4">
+                    <i class="material-icons sideBarIcon">attach_money</i>
+                    <div class="sideBarLabel">
+                        Pagos
+                    </div>               
+                </div>
+            </div> -->
 
             <!-- Main Content -->
             <div class="mainContent flexColumn">
@@ -63,6 +82,7 @@
                 </div>
             </div>
         </div>
+
         <script>
             fetch('selectCliente.php')
             .then(res => res.json())
@@ -87,5 +107,7 @@
                 `;
             });
         </script>
+
+        
     </body>
 </html>
