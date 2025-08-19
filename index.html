@@ -54,7 +54,7 @@
                         <div class="gridTableHeaderItem" id="colTelefono">Telefono</div>
                         <div class="gridTableHeaderItem" id="colSanes">Sanes</div>
                         <div class="gridTableHeaderItem" id="colCredito">Credito</div>
-                        <div class="gridTableHeaderItem" id="ColUbicacion">Ubicacion</div>
+                        <div class="gridTableHeaderItem" id="colUbicacion">Ubicacion</div>
                     </div>
                     
                     <div class="gridTableBody" id="tableClientes">
@@ -78,7 +78,7 @@
                     <div class="gridTableItem" id="colTelefono">${cliente.numeroTelefono}</div>
                     <div class="gridTableItem" id="colSanes">${cliente.sanesActivos}</div>
                     <div class="gridTableItem" id="colCredito">$${parseFloat(cliente.credito).toFixed(2)}</div>
-                    <div class="gridTableItem" id="ColUbicacion">${cliente.direccion}</div>
+                    <div class="gridTableItem" id="colUbicacion">${cliente.direccion}</div>
                 </div>
                 `).join('');
             })
@@ -94,6 +94,7 @@
             const menuBtn = document.getElementById("menuBtn");
             const sideBar = document.getElementById("sideBar");
             const focusOverlay = document.getElementById("focus");
+            const sideBarItems = document.querySelectorAll(".sideBarItem");
 
             function openSidebar() {
                 sideBar.classList.add('open');
@@ -107,6 +108,9 @@
 
              menuBtn.addEventListener('click', openSidebar);
              focusOverlay.addEventListener('click', closeSidebar);
+             sideBarItems.forEach(item => {
+            item.addEventListener('click', closeSidebar);
+        });
             
         </script>
 

@@ -162,6 +162,12 @@ body{
     font-weight: bolder;
 }
 
+.mainContent{
+    width:100%;
+    margin-left:5rem;
+    padding:0.5rem;
+}
+
 .sideBar{
     background-color: var(--accent-color);
     position:fixed;
@@ -250,5 +256,17 @@ body{
     font-size:0.8em;
     color:var(--primary-color);
 }
+
+@media (orientation: portrait){
+    .gridRow{
+        grid-template-columns: repeat(3, minmax(10rem, 1fr));
+    }
+    #colSanes,#colUbicacion,#colApellido{
+        display:none;
+    }
+}
+
+
+
 
 
