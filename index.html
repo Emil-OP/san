@@ -13,35 +13,13 @@
             <div class="material-icons headerBtn" id="menuBtn" tabIndex="0">menu</div>
             <div class="headerTitle">Clientes</div>
             <div class="material-icons headerBtn" id="searchBtn" tabIndex="1">search</div>
-
-            <div class="sideBar flexColumn" id="sideBar">
-                
-                <div class="sideBarItem flexRow"  tabIndex="2">
-                    <i class="material-icons sideBarIcon">savings</i>
-                    <div class="sideBarLabel">
-                        San
-                    </div>
-                </div>
-                <div class="sideBarItem flexRow" id="clientesBtn" tabIndex="3">
-                    <i class="material-icons sideBarIcon">groups</i>
-                    <div class="sideBarLabel">
-                        Clientes
-                    </div>
-                </div>
-                <div class="sideBarItem flexRow" tabIndex="4">
-                    <i class="material-icons sideBarIcon">attach_money</i>
-                    <div class="sideBarLabel">
-                        Pagos
-                    </div>               
-                </div>
-            </div>
         </div>
 
         <!-- Container -->
         <div class="container flexRow">
 
             <!-- Sidebar -->
-            <!-- <div class="sideBar flexColumn">
+            <div class="sideBar flexColumn" id="sideBar">
                 
                 <div class="sideBarItem flexRow"  tabIndex="2">
                     <i class="material-icons sideBarIcon">savings</i>
@@ -61,18 +39,22 @@
                         Pagos
                     </div>               
                 </div>
-            </div> -->
+            </div>
+
+            <!-- Focus -->
+
+            <div class="focus" id="focus"></div>
 
             <!-- Main Content -->
             <div class="mainContent flexColumn">
                 <div class = "gridTable">
                     <div class="gridRow gridTableHeader">
-                        <div class="gridTableHeaderItem">Nombre</div>
-                        <div class="gridTableHeaderItem">Apellido</div>
-                        <div class="gridTableHeaderItem">Telefono</div>
-                        <div class="gridTableHeaderItem">Sanes</div>
-                        <div class="gridTableHeaderItem">Credito</div>
-                        <div class="gridTableHeaderItem">Ubicacion</div>
+                        <div class="gridTableHeaderItem" id="colNombre">Nombre</div>
+                        <div class="gridTableHeaderItem" id="colApellido">Apellido</div>
+                        <div class="gridTableHeaderItem" id="colTelefono">Telefono</div>
+                        <div class="gridTableHeaderItem" id="colSanes">Sanes</div>
+                        <div class="gridTableHeaderItem" id="colCredito">Credito</div>
+                        <div class="gridTableHeaderItem" id="ColUbicacion">Ubicacion</div>
                     </div>
                     
                     <div class="gridTableBody" id="tableClientes">
@@ -91,12 +73,12 @@
                 const tableBody = document.getElementById("tableClientes");
                 tableBody.innerHTML = data.data.map(cliente => `
                 <div class="gridRow">
-                    <div class="gridTableItem">${cliente.nombre}</div>
-                    <div class="gridTableItem">${cliente.apellido}</div>
-                    <div class="gridTableItem">${cliente.numeroTelefono}</div>
-                    <div class="gridTableItem">${cliente.sanesActivos}</div>
-                    <div class="gridTableItem">$${parseFloat(cliente.credito).toFixed(2)}</div>
-                    <div class="gridTableItem">${cliente.direccion}</div>
+                    <div class="gridTableItem" id="colNombre">${cliente.nombre}</div>
+                    <div class="gridTableItem" id="colApellido">${cliente.apellido}</div>
+                    <div class="gridTableItem" id="colTelefono">${cliente.numeroTelefono}</div>
+                    <div class="gridTableItem" id="colSanes">${cliente.sanesActivos}</div>
+                    <div class="gridTableItem" id="colCredito">$${parseFloat(cliente.credito).toFixed(2)}</div>
+                    <div class="gridTableItem" id="ColUbicacion">${cliente.direccion}</div>
                 </div>
                 `).join('');
             })
@@ -106,6 +88,26 @@
                     <div class="error">${err.message}</div>
                 `;
             });
+        </script>
+
+        <script>
+            const menuBtn = document.getElementById("menuBtn");
+            const sideBar = document.getElementById("sideBar");
+            const focusOverlay = document.getElementById("focus");
+
+            function openSidebar() {
+                sideBar.classList.add('open');
+                focusOverlay.classList.add('active');
+            }
+
+            function closeSidebar() {
+                sideBar.classList.remove('open');
+                focusOverlay.classList.remove('active');
+            }
+
+             menuBtn.addEventListener('click', openSidebar);
+             focusOverlay.addEventListener('click', closeSidebar);
+            
         </script>
 
         
