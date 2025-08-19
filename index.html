@@ -52,9 +52,9 @@
                         <div class="gridTableHeaderItem" id="colNombre">Nombre</div>
                         <div class="gridTableHeaderItem" id="colApellido">Apellido</div>
                         <div class="gridTableHeaderItem" id="colTelefono">Telefono</div>
+                        <div class="gridTableHeaderItem" id="colUbicacion">Ubicacion</div>
                         <div class="gridTableHeaderItem" id="colSanes">Sanes</div>
                         <div class="gridTableHeaderItem" id="colCredito">Credito</div>
-                        <div class="gridTableHeaderItem" id="colUbicacion">Ubicacion</div>
                     </div>
                     
                     <div class="gridTableBody" id="tableClientes">
@@ -76,9 +76,9 @@
                     <div class="gridTableItem" id="colNombre">${cliente.nombre}</div>
                     <div class="gridTableItem" id="colApellido">${cliente.apellido}</div>
                     <div class="gridTableItem" id="colTelefono">${cliente.numeroTelefono}</div>
+                    <div class="gridTableItem" id="colUbicacion">${cliente.direccion}</div>
                     <div class="gridTableItem" id="colSanes">${cliente.sanesActivos}</div>
                     <div class="gridTableItem" id="colCredito">$${parseFloat(cliente.credito).toFixed(2)}</div>
-                    <div class="gridTableItem" id="colUbicacion">${cliente.direccion}</div>
                 </div>
                 `).join('');
             })
