@@ -6,7 +6,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $apellido = $_POST['apellido'];
     $numeroTelefono = $_POST['numeroTelefono'];
     $direccion = $_POST['direccion'];
-    $select = "SELECT telefono FROM cliente WHERE telefono = ? LIMIT 1";
+    $select = "SELECT numeroTelefono FROM participante WHERE numeroTelefono = ? LIMIT 1";
     
     $stmt = $connection ->prepare($select);
     $stmt->bind_param("s", $numeroTelefono);
@@ -16,7 +16,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     if($rnum==0){
         $stmt->close();
-        $query = "INSERT INTO participante (nombre, apellido, telefono, direccion) VALUES (?, ?, ?, ?)";
+        $query = "INSERT INTO participante (nombre, apellido, numeroTelefono, direccion) VALUES (?, ?, ?, ?)";
         $stmt = $connection->prepare($query);
         $stmt->bind_param("ssss", $nombre, $apellido, $numeroTelefono, $direccion);
         $stmt->execute();
