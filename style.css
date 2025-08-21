@@ -80,6 +80,7 @@ body{
     cursor: pointer;
     padding-left: 1rem;
     border:2px solid var(--primary-color);
+    z-index: 10;
 }
 
 .floatingSearchField{
@@ -128,14 +129,25 @@ body{
 }
 
 .formContainer{
+    display:none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     align-items: center;
     justify-content: center;
     max-width: 20rem;
+    max-height:95vh;
+    overflow: hidden;
     width:100%;
     background-color: var(--secondary-color);
     border-radius: 1rem;
     padding:1rem;
-    box-shadow: 0.5rem 0.5rem rgba(0, 0, 0, 0.2);
+    z-index:1001; 
+}
+
+.formContainer.open{
+    display:flex;
 }
 
 .formField{
@@ -165,7 +177,7 @@ body{
     background-color: inherit;
     font-size:2rem;
     min-width:100%;
-    margin-bottom:1rem;
+    margin-bottom:0;
     text-align: center;
     color:var(--primary-color)
 }
