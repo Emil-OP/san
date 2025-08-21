@@ -11,8 +11,7 @@
         <!-- Header -->
         <div class="header flexRow">
             <div class="material-icons headerBtn" id="menuBtn" tabIndex="0">menu</div>
-            <div class="headerTitle">Clientes</div>
-            <div class="material-icons headerBtn" id="searchBtn" tabIndex="1">search</div>
+            <div class="headerTitle">Clientes</div> 
         </div>
 
         <!-- Container -->
@@ -21,19 +20,19 @@
             <!-- Sidebar -->
             <div class="sideBar flexColumn" id="sideBar">
                 
-                <div class="sideBarItem flexRow"  tabIndex="2">
+                <div class="sideBarItem flexRow"  tabIndex="1">
                     <i class="material-icons sideBarIcon">savings</i>
                     <div class="sideBarLabel">
                         San
                     </div>
                 </div>
-                <div class="sideBarItem flexRow" tabIndex="3">
+                <div class="sideBarItem flexRow" tabIndex="2">
                     <i class="material-icons sideBarIcon">groups</i>
                     <div class="sideBarLabel">
                         Clientes
                     </div>
                 </div>
-                <div class="sideBarItem flexRow" tabIndex="4">
+                <div class="sideBarItem flexRow" tabIndex="3">
                     <i class="material-icons sideBarIcon">attach_money</i>
                     <div class="sideBarLabel">
                         Pagos
@@ -90,30 +89,15 @@
             });
         </script>
 
-        <script>
-            const menuBtn = document.getElementById("menuBtn");
-            const sideBar = document.getElementById("sideBar");
-            const focusOverlay = document.getElementById("focus");
-            const sideBarItems = document.querySelectorAll(".sideBarItem");
-
-            function openSidebar() {
-                sideBar.classList.add('open');
-                focusOverlay.classList.add('active');
-            }
-
-            function closeSidebar() {
-                sideBar.classList.remove('open');
-                focusOverlay.classList.remove('active');
-            }
-
-             menuBtn.addEventListener('click', openSidebar);
-             focusOverlay.addEventListener('click', closeSidebar);
-             sideBarItems.forEach(item => {
-            item.addEventListener('click', closeSidebar);
-        });
-            
-        </script>
-
+            <div class = "floatingAdd" id="floatingAdd" tabIndex="4">
+                <div class="material-icons">add</div>
+            </div>
+            <div class="floatingSearch" id="floatingSearch" type="text" tabIndex="5">
+                <div class="material-icons">search</div>
+                <input class="floatingSearchField" type="text" id="floatingSearchInput" placeholder="Buscar cliente...">
+            </div>
         
+        </div>
+        <script src="script.js"></script>            
     </body>
 </html>

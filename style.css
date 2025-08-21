@@ -25,6 +25,10 @@ body{
     overflow-x: hidden;
 }
 
+.material-icons{
+    background-color: inherit;
+}
+
 .container{
     max-width: 100%;
     height:90vh;
@@ -38,6 +42,61 @@ body{
 .flexColumn{
     display:flex;
     flex-direction: column;
+}
+
+
+.floatingAdd, .floatingSearch{
+    width: 3rem;
+    height: 3rem;
+    background-color: var(--primary-color);
+    border-radius: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.5s ease;
+}
+
+.floatingAdd{
+    position:fixed;
+    bottom:6rem;
+    right: 2rem;
+}
+
+.floatingSearch{
+    position:fixed;
+    bottom: 2rem;
+    right: 2rem;
+}
+
+.floatingSearch.open{
+    transform: translateX(-27rem);
+    width: 30rem;
+    height: 3rem;
+    background-color: var(--accent-color);
+    border-radius: 15rem;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    cursor: pointer;
+    padding-left: 1rem;
+    border:2px solid var(--primary-color);
+}
+
+.floatingSearchField{
+    margin-left:1rem;
+    background-color: rgba(0,0,0,0);
+    border:none;
+    display:none;
+    transition: all 0.5s ease;
+}
+
+.floatingSearchField:focus{
+    outline:none;
+}
+
+.floatingSearchField.active{
+    display:block;
 }
 
 .focus{
@@ -146,6 +205,7 @@ body{
     top:0;
     z-index: 1000;
     justify-content: space-between;
+    padding-right:3rem;
 }
 
 .headerBtn{
