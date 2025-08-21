@@ -70,8 +70,7 @@ body{
 }
 
 .floatingSearch.open{
-    transform: translateX(-27rem);
-    width: 30rem;
+    width: 85vw;
     height: 3rem;
     background-color: var(--accent-color);
     border-radius: 15rem;
