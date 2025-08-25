@@ -39,30 +39,51 @@
                 focusOverlay.addEventListener('click', closeForm);
                
 
-            // Search button functionality
+            // Search button visuals
             
             const floatingSearch = document.getElementById("floatingSearch");
-            const floatingSearchInput = document.getElementById("floatingSearchInput");
+            const floatingSearchForm = document.getElementById("floatingSearchForm");
 
             function openSearch(){
                 floatingSearch.classList.add('open');
-                floatingSearchInput.classList.add('active')
+                floatingSearchForm.classList.add('active')
                 focusOverlay.classList.add('active');
-                floatingSearchInput.focus();
+                document.getElementById("floatingSearchInput").focus();
             }
 
             function closeSearch(){
                 floatingSearch.classList.remove('open');
-                floatingSearchInput.classList.remove('active');
+                floatingSearchForm.classList.remove('active');
                 focusOverlay.classList.remove('active');
             }
 
             floatingSearch.addEventListener('click', openSearch);
-            floatingSearchInput.addEventListener('blur', closeSearch);
+            floatingSearchForm.addEventListener('blur', closeSearch);
             focusOverlay.addEventListener('click', closeSearch);
-            floatingSearchInput.addEventListener('keydown', function(event) {
+            floatingSearchForm.addEventListener('keydown', function(event) {
                 if (event.key === 'Enter' || event.key === 'Escape') {
                     closeSearch();
                 }
             });
+
+            //Search bar functionality
+
+            function searchCliente(){
+                var nombre, apellido, telefono;
+            const floatingSearchInput = document.getElementById("floatingSearchInput");
+            const filter = floatingSearchInput.value.toUpperCase();
+            const table = document.getElementById("tableClientes");
+            const rows = table.getElementsByTagName("tr");
+            for (let i = 0; i < rows.length; i++) {
+                nombre =  rows[i].getElementsByTagName("td")[0].textContent;
+                apellido =  rows[i].getElementsByTagName("td")[1].textContent;
+                telefono =  rows[i].getElementsByTagName("td")[2].textContent;
+                if (nombre.toUpperCase().indexOf(filter) > -1 || apellido.toUpperCase().indexOf(filter) > -1 || telefono.toUpperCase().indexOf(filter) > -1 ){
+                    rows[i].style.display = "";
+                } else {
+                    rows[i].style.display = "none";
+                }                
+            }
+        }
+
 

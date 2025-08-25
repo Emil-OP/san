@@ -2,7 +2,7 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, viewport-fit=cover">
         <link rel="stylesheet" href="style.css"/>
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"/>
         <title>Document</title>
@@ -46,21 +46,21 @@
 
             <!-- Main Content -->
             <div class="mainContent flexColumn">
-                <div class = "gridTable">
-                    <div class="gridRow gridTableHeader">
-                        <div class="gridTableHeaderItem" id="colNombre">Nombre</div>
-                        <div class="gridTableHeaderItem" id="colApellido">Apellido</div>
-                        <div class="gridTableHeaderItem" id="colTelefono">Telefono</div>
-                        <div class="gridTableHeaderItem" id="colUbicacion">Ubicacion</div>
-                        <div class="gridTableHeaderItem" id="colSanes">Sanes</div>
-                        <div class="gridTableHeaderItem" id="colCredito">Credito</div>
-                    </div>
-                    
-                    <div class="gridTableBody" id="tableClientes">
-                        
-                    <div class="loading">Cargando clientes...</div>
-                    </div>
-                </div>
+                <table class = "dataTable">
+                    <thead>
+                        <tr class="dataTableRow dataTableHeader">
+                            <th class="dataTableHeaderItem" id="colNombre" style="border-top-left-radius: 1rem;">Nombre</th>
+                            <th class="dataTableHeaderItem" id="colApellido">Apellido</th>
+                            <th class="dataTableHeaderItem" id="colTelefono">Telefono</th>
+                            <th class="dataTableHeaderItem" id="colSanes">Sanes</th>
+                            <th class="dataTableHeaderItem" id="colCredito">Credito</th>
+                            <th class="dataTableHeaderItem" id="colUbicacion" style="border-top-right-radius: 1rem;">Ubicacion</th>
+                        </tr>
+                    </thead>
+                    <tbody class="dataTableBody" id="tableClientes">
+                        <td class="loading">Cargando clientes...</td>
+                    </tbody>
+                </table>
             </div>
         </div>
 
@@ -71,20 +71,20 @@
                 if (!data.success) throw new Error(data.error);
                 const tableBody = document.getElementById("tableClientes");
                 tableBody.innerHTML = data.data.map(cliente => `
-                <div class="gridRow">
-                    <div class="gridTableItem" id="colNombre">${cliente.nombre}</div>
-                    <div class="gridTableItem" id="colApellido">${cliente.apellido}</div>
-                    <div class="gridTableItem" id="colTelefono">${cliente.numeroTelefono}</div>
-                    <div class="gridTableItem" id="colUbicacion">${cliente.direccion}</div>
-                    <div class="gridTableItem" id="colSanes">${cliente.sanesActivos}</div>
-                    <div class="gridTableItem" id="colCredito">$${Number.isNaN(parseFloat(cliente.credito)) ? '0.00' : parseFloat(cliente.credito).toFixed(2)}</div>
-                </div>
+                <tr class="dataTableRow">
+                    <td class="dataTableItem" id="colNombre">${cliente.nombre}</td>
+                    <td class="dataTableItem" id="colApellido">${cliente.apellido}</td>
+                    <td class="dataTableItem" id="colTelefono">${cliente.numeroTelefono}</td>
+                    <td class="dataTableItem" id="colSanes">${cliente.sanesActivos}</td>
+                    <td class="dataTableItem" id="colCredito">$${Number.isNaN(parseFloat(cliente.credito)) ? '0.00' : parseFloat(cliente.credito).toFixed(2)}</td>
+                    <td class="dataTableItem" id="colUbicacion">${cliente.direccion}</td>
+                </tr>
                 `).join('');
             })
             .catch(err => {
                 console.error(err);
                 document.getElementById("tableClientes").innerHTML = `
-                    <div class="error">${err.message}</div>
+                    <td class="error" colspan="3">${err.message}</td>
                 `;
             });
         </script>
@@ -116,7 +116,9 @@
             </form>
             <div class="floatingSearch" id="floatingSearch" type="text" tabIndex="5">
                 <div class="material-icons">search</div>
-                <input class="floatingSearchField" type="text" id="floatingSearchInput" placeholder="Buscar cliente...">
+                <form class="floatingSearchForm flexRow" id="floatingSearchForm">
+                <input class="floatingSearchField" type="text" id="floatingSearchInput" placeholder="Buscar cliente..." onkeyup="searchCliente()">
+                </form>
             </div>
         
         </div>
