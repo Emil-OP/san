@@ -161,6 +161,11 @@ body{
     border-radius: 0.8rem;
     cursor: pointer;
     font-weight: bolder;
+    transition: all 0.3s ease;
+}
+
+.formBtn:active{
+    transform:scale(1.1);
 }
 
 .formContainer{

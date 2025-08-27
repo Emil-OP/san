@@ -64,35 +64,10 @@
             </div>
         </div>
 
-        <script>
-            fetch('selectCliente.php')
-            .then(res => res.json())
-            .then(data => {
-                if (!data.success) throw new Error(data.error);
-                const tableBody = document.getElementById("tableClientes");
-                tableBody.innerHTML = data.data.map(cliente => `
-                <tr class="dataTableRow">
-                    <td class="dataTableItem" id="colNombre">${cliente.nombre}</td>
-                    <td class="dataTableItem" id="colApellido">${cliente.apellido}</td>
-                    <td class="dataTableItem" id="colTelefono">${cliente.numeroTelefono}</td>
-                    <td class="dataTableItem" id="colSanes">${cliente.sanesActivos}</td>
-                    <td class="dataTableItem" id="colCredito">$${Number.isNaN(parseFloat(cliente.credito)) ? '0.00' : parseFloat(cliente.credito).toFixed(2)}</td>
-                    <td class="dataTableItem" id="colUbicacion">${cliente.direccion}</td>
-                </tr>
-                `).join('');
-            })
-            .catch(err => {
-                console.error(err);
-                document.getElementById("tableClientes").innerHTML = `
-                    <td class="error" colspan="3">${err.message}</td>
-                `;
-            });
-        </script>
-
             <div class = "floatingAdd" id="floatingAdd" tabIndex="4">
                 <div class="material-icons">add</div>
             </div>
-            <form class="formContainer flexColumn" id="formContainer" action="insert.php" method="POST">
+            <form class="formContainer flexColumn" id="formNewClient">
                 <div class="formTitle">
                     Registrar Cliente
                 </div>
@@ -112,7 +87,8 @@
                     <input class="txtField" type="text" id="direccion" name="direccion" required>
                     <label class="formLabel" for="direccion">Dirección</label>
                 </div>
-                <button class="formBtn" type="submit">Registrar</button>
+                <button class="formBtn" id="formBtnClient" type="submit" >Registrar</button>
+                <div id="responseMessage" class="toast"></div>
             </form>
             <div class="floatingSearch" id="floatingSearch" type="text" tabIndex="5">
                 <div class="material-icons">search</div>
