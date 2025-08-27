@@ -20,9 +20,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $stmt = $connection->prepare($query);
         $stmt->bind_param("ssss", $nombre, $apellido, $numeroTelefono, $direccion);
         $stmt->execute();
-        echo "Registro exitoso.";
+        echo "true";
     } else {
-        echo "El numero de telefono ya existe.";
+        echo "false";
     }    
     $stmt->close();
     $connection->close();
