@@ -64,39 +64,45 @@
             </div>
         </div>
 
-            <div class = "floatingAdd" id="floatingAdd" tabIndex="4">
-                <div class="material-icons">add</div>
-            </div>
-            <form class="formContainer flexColumn" id="formNewClient">
-                <div class="formTitle">
-                    Registrar Cliente
-                </div>
-                <div class="formField">
-                    <input class="txtField" type="text" id="nombre" name="nombre" required>
-                    <label class="formLabel" for="name">Nombre</label>
-                </div>
-                <div class="formField">
-                    <input class="txtField" type="text" id="apellido" name="apellido" required>
-                    <label class="formLabel" for="apellido">Apellido</label>
-                </div>
-                <div class="formField">
-                    <input class="txtField" type="tel" id="numeroTelefono" name="numeroTelefono" required>
-                    <label class="formLabel" for="numeroTelefono">Número de Teléfono</label>
-                </div>
-                <div class="formField">
-                    <input class="txtField" type="text" id="direccion" name="direccion" required>
-                    <label class="formLabel" for="direccion">Dirección</label>
-                </div>
-                <button class="formBtn" id="formBtnClient" type="submit" >Registrar</button>
-                <div id="responseMessage" class="toast"></div>
-            </form>
-            <div class="floatingSearch" id="floatingSearch" type="text" tabIndex="5">
-                <div class="material-icons">search</div>
-                <form class="floatingSearchForm flexRow" id="floatingSearchForm">
-                <input class="floatingSearchField" type="text" id="floatingSearchInput" placeholder="Buscar cliente..." onkeyup="searchCliente()">
-                </form>
-            </div>
+        <!-- Client register Button -->
         
+        <div class = "floatingAdd" id="floatingAdd" tabIndex="4">
+            <div class="material-icons">add</div>
+        </div>
+
+        <!-- Client register form -->
+        
+        <form class="formContainer flexColumn" id="formNewClient">
+            <div class="formTitle">
+                Registrar Cliente
+            </div>
+            <div class="formField">
+                <input class="txtField" type="text" id="nombre" name="nombre" required>
+                <label class="formLabel" for="name">Nombre</label>
+            </div>
+            <div class="formField">
+                <input class="txtField" type="text" id="apellido" name="apellido" required>
+                <label class="formLabel" for="apellido">Apellido</label>
+            </div>
+            <div class="formField">
+                <input class="txtField" type="tel" id="numeroTelefono" name="numeroTelefono" required>
+                <label class="formLabel" for="numeroTelefono">Número de Teléfono</label>
+            </div>
+            <div class="formField">
+                <input class="txtField" type="text" id="direccion" name="direccion" required>
+                <label class="formLabel" for="direccion">Dirección</label>
+            </div>
+            <button class="formBtn" id="formBtnClient" type="submit" >Registrar</button>
+            <div id="toastMessageClient" class="toastMessage"></div>
+        </form>
+
+        <!-- Search Button/Bar -->
+
+        <div class="floatingSearch" id="floatingSearch" type="text" tabIndex="5">
+            <div class="material-icons">search</div>
+            <form class="floatingSearchForm flexRow" id="floatingSearchForm">
+            <input class="floatingSearchField" type="text" id="floatingSearchInput" placeholder="Buscar cliente..." onkeyup="searchCliente()">
+            </form>
         </div>
         <script src="script.js"></script>            
     </body>

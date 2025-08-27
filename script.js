@@ -131,36 +131,27 @@ function registerClient(){
     formData.append('numeroTelefono', document.getElementById('numeroTelefono').value);
     formData.append('direccion', document.getElementById('direccion').value);
 
+    const toastMessage = document.getElementById('toastMessageClient');
+
+
     fetch('insertClient.php', {method: 'POST', body: formData})
-            .then(response=>response.text())
-            .then(data=>{
-                if(data.includes('true')){
-                    showResponse('Cliente agregado!','success');
-                    document.getElementById("formNewClient").reset();
-                    loadClients();
-                } else {
-                    showResponse('Cliente no fue agregado.', 'error');
-                }
-                }
-            )
-            .catch(error => {
-               showResponse('Error de conexión: ' + error, 'error');
-            })
-            .finally(() => {
+        .then(response=>response.text())
+        .then(data=>{
+            if(data.includes('true')){
+                toastMessage.textContent="Cliente fue agregado!";
+                document.getElementById("formNewClient").reset();
+                loadClients();
+            } else {
+                toastMessage.textContent="Cliente no fue agregado.";
+            }
+            toastMessage.classList.add('show');
+            setTimeout(() => {
+                toastMessage.classList.remove('show');
                 submitBtn.disabled = false;
-            });
+            }, 5000);
+        })
 }
 
-function showResponse(message, type) {
-            const responseElement = document.getElementById('responseMessage');
-            responseElement.textContent = message;
-            responseElement.className = 'responseMessage ' + type;
-            responseElement.style.display = 'block';
-            responseElement.style.opacity = '1';
-            
-            setTimeout(() => {
-                responseElement.style.display = 'none'
-                responseElement.style.opacity = '0';
-            }, 5000);
-        }
 
+
+ 
