@@ -135,11 +135,11 @@ function registerClient(){
             .then(response=>response.text())
             .then(data=>{
                 if(data.includes('true')){
-                    showResponse(data,'success');
+                    showResponse('Cliente agregado!','success');
                     document.getElementById("formNewClient").reset();
                     loadClients();
                 } else {
-                    showResponse(data, 'error');
+                    showResponse('Cliente no fue agregado.', 'error');
                 }
                 }
             )
@@ -156,9 +156,11 @@ function showResponse(message, type) {
             responseElement.textContent = message;
             responseElement.className = 'responseMessage ' + type;
             responseElement.style.display = 'block';
+            responseElement.style.opacity = '1';
             
             setTimeout(() => {
-                responseElement.style.display = 'none';
+                responseElement.style.display = 'none'
+                responseElement.style.opacity = '0';
             }, 5000);
         }
 
