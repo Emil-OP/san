@@ -15,55 +15,52 @@
             <div class="headerTitle">Clientes</div> 
         </div>
 
-        <!-- Container -->
-        <div class="container flexRow">
+        <!-- Focus -->
 
-            <!-- Sidebar -->
-            <div class="sideBar flexColumn" id="sideBar">
-                
-                <div class="sideBarItem flexRow"  tabIndex="1">
-                    <i class="material-icons sideBarIcon">savings</i>
-                    <div class="sideBarLabel">
-                        San
-                    </div>
-                </div>
-                <div class="sideBarItem flexRow" tabIndex="2">
-                    <i class="material-icons sideBarIcon">groups</i>
-                    <div class="sideBarLabel">
-                        Clientes
-                    </div>
-                </div>
-                <div class="sideBarItem flexRow" tabIndex="3">
-                    <i class="material-icons sideBarIcon">attach_money</i>
-                    <div class="sideBarLabel">
-                        Pagos
-                    </div>               
+        <div class="focus" id="focus"></div>
+
+        <!-- Sidebar -->
+        <div class="sideBar flexColumn" id="sideBar">
+            
+            <div class="sideBarItem flexRow"  tabIndex="1">
+                <i class="material-icons sideBarIcon">savings</i>
+                <div class="sideBarLabel">
+                    San
                 </div>
             </div>
-
-            <!-- Focus -->
-
-            <div class="focus" id="focus"></div>
-
-            <!-- Main Content -->
-            <div class="mainContent flexColumn">
-                <table class = "dataTable">
-                    <thead>
-                        <tr class="dataTableHeader">
-                            <th class="dataTableHeaderItem" id="colNombre" style="border-top-left-radius: 1rem;">Nombre</th>
-                            <th class="dataTableHeaderItem" id="colApellido">Apellido</th>
-                            <th class="dataTableHeaderItem" id="colTelefono">Telefono</th>
-                            <th class="dataTableHeaderItem" id="colSanes">Sanes</th>
-                            <th class="dataTableHeaderItem" id="colCredito">Credito</th>
-                            <th class="dataTableHeaderItem" id="colUbicacion" style="border-top-right-radius: 1rem;">Ubicacion</th>
-                        </tr>
-                    </thead>
-                    <tbody class="dataTableBody" id="dataTableClientes">
-                        <td class="loading">Cargando clientes...</td>
-                    </tbody>
-                </table>
+            <div class="sideBarItem flexRow" tabIndex="2">
+                <i class="material-icons sideBarIcon">groups</i>
+                <div class="sideBarLabel">
+                    Clientes
+                </div>
+            </div>
+            <div class="sideBarItem flexRow" tabIndex="3">
+                <i class="material-icons sideBarIcon">attach_money</i>
+                <div class="sideBarLabel">
+                    Pagos
+                </div>               
             </div>
         </div>
+          
+        <!-- Main Content -->
+        <div class="mainContent flexColumn">
+            <table class = "dataTable">
+                <thead>
+                    <tr class="dataTableHeader">
+                        <th class="dataTableHeaderItem" id="colNombre" style="border-top-left-radius: 1rem;">Nombre</th>
+                        <th class="dataTableHeaderItem" id="colApellido">Apellido</th>
+                        <th class="dataTableHeaderItem" id="colTelefono">Telefono</th>
+                        <th class="dataTableHeaderItem" id="colSanes">Sanes</th>
+                        <th class="dataTableHeaderItem" id="colCredito">Credito</th>
+                        <th class="dataTableHeaderItem" id="colUbicacion" style="border-top-right-radius: 1rem;">Ubicacion</th>
+                    </tr>
+                </thead>
+                <tbody class="dataTableBody" id="dataTableClientes">
+                    <td class="loading">Cargando clientes...</td>
+                </tbody>
+            </table>
+        </div>
+        
 
         <!-- Client register Button -->
         
@@ -73,7 +70,7 @@
 
         <!-- Client register form -->
         
-        <form class="formContainer flexColumn" id="formNewClient">
+        <form class="formContainer flexColumn" id="formClientNew">
             <div class="formTitle">
                 Registrar Cliente
             </div>
@@ -99,33 +96,33 @@
 
         <!-- CLient View Form -->
 
-        <form class="formContainer flexColumn" id="formViewClient">
+        <form class="formContainer flexColumn" id="formClientView">
             <div class="formTitle">
                 Ver Cliente
             </div>
             <div class="formField">
-                <input class="txtField" type="text" id="nombre" name="nombre" disabled="true">
+                <input class="txtField txtFieldView" type="text" id="nombre" name="nombre" disabled="true">
                 <label class="formLabel formLabelView" for="name">Nombre</label>
             </div>
             <div class="formField">
-                <input class="txtField" type="text" id="apellido" name="apellido" disabled="true">
+                <input class="txtField txtFieldView" type="text" id="apellido" name="apellido" disabled="true">
                 <label class="formLabel formLabelView" for="apellido">Apellido</label>
             </div>
             <div class="formField">
-                <input class="txtField" type="tel" id="numeroTelefono" name="numeroTelefono" disabled="true">
+                <input class="txtField txtFieldView" type="tel" id="numeroTelefono" name="numeroTelefono" disabled="true">
                 <label class="formLabel formLabelView" for="numeroTelefono">Número de Teléfono</label>
             </div>
             <div class="formField">
-                <input class="txtField" type="text" id="direccion" name="direccion" disabled="true">
+                <input class="txtField txtFieldView" type="text" id="direccion" name="direccion" disabled="true">
                 <label class="formLabel formLabelView" for="direccion">Dirección</label>
             </div>
-            <button class="formBtn" id="formBtnClient" type="submit" >Registrar</button>
+            <button class="formBtn" id="formBtnClientView" type="button" >Editar</button>
             <div id="toastMessageClient" class="toastMessage"></div>
         </form>
 
         <!-- Client Edit Form -->
         
-        <form class="formContainer flexColumn" id="formEditClient">
+        <form class="formContainer flexColumn" id="formClientEdit">
             <div class="formTitle">
                 Editar Cliente
             </div>
@@ -145,7 +142,7 @@
                 <input class="txtField" type="text" id="direccion" name="direccion" required>
                 <label class="formLabel" for="direccion">Dirección</label>
             </div>
-            <button class="formBtn" id="formBtnClient" type="submit" >Registrar</button>
+            <button class="formBtn" id="formBtnClientEdit" type="submit" >Guardar</button>
             <div id="toastMessageClient" class="toastMessage"></div>
         </form>
 

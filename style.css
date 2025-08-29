@@ -20,12 +20,9 @@ body{
     background-color: var(--background-color);
     display: flex;
     flex-direction: column;
-    align-items: center;
     height: 100vh;
     overflow-x: hidden;
 }
-
-
 
 .material-icons{
     background-color: inherit;
@@ -44,6 +41,7 @@ body{
     text-align: left;
     overflow-x: hidden;
     overflow-y: auto;
+    margin-bottom:10rem;
 }
 
 #dataTableClientes tr:hover{
@@ -245,8 +243,8 @@ body{
 }
 
 .mainContent{
-    width:100%;
-    margin-left:5rem;
+    width:auto;
+    margin:auto;
     padding:0.5rem;
 }
 
@@ -350,10 +348,16 @@ body{
     color:var(--primary-color);
 }
 
+.txtFieldView{
+    background-color: inherit;
+}
+
 .formLabelView{
     transform: translateY(-1.5rem);
     font-size:0.8em;
     color:var(--primary-color);
+    background: none;
+    border-bottom: 1px solid var(--accent-color);
 }
 
 @media (orientation: portrait){  

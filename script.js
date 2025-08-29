@@ -52,7 +52,7 @@ document.addEventListener("DOMContentLoaded", loadClients);
 // Add button functionality
 
 const floatingAdd = document.getElementById("floatingAdd");
-const formNewClient = document.getElementById("formNewClient");
+const formClientNew = document.getElementById("formClientNew");
 
 function openForm(formClient){
     formClient.classList.add('open');
@@ -64,8 +64,8 @@ function openForm(formClient){
     focusOverlay.classList.remove('active');
 }
 
-floatingAdd.addEventListener('click', () => openForm(formNewClient));
-focusOverlay.addEventListener('click', () => closeForm(formNewClient));
+floatingAdd.addEventListener('click', () => openForm(formClientNew));
+focusOverlay.addEventListener('click', () => closeForm(formClientNew));
     
 
 // Search button visuals
@@ -119,7 +119,7 @@ function searchCliente(){
 
 //Register Client
 
-document.getElementById("formNewClient").addEventListener('submit',function(e){e.preventDefault();registerClient()});
+document.getElementById("formClientNew").addEventListener('submit',function(e){e.preventDefault();registerClient()});
 
 function registerClient(){
     const submitBtn = document.getElementById("formBtnClient");
@@ -138,7 +138,7 @@ function registerClient(){
         .then(data=>{
             if(data.includes('true')){
                 toastMessage.textContent="Cliente fue agregado!";
-                document.getElementById("formNewClient").reset();
+                document.getElementById("formClientNew").reset();
                 loadClients();
             } else {
                 toastMessage.textContent="Cliente no fue agregado.";
@@ -154,23 +154,23 @@ function registerClient(){
 
 //View Client
 
-const formViewClient = document.getElementById("formViewClient");
+const formClientView = document.getElementById("formClientView");
 
 document.getElementById("dataTableClientes").addEventListener('click', function(event) {
     const row = event.target.closest('.dataTableRow');
     if (row) {
         populateViewForm(row);
-        openForm(formViewClient);
+        openForm(formClientView);
     }
 });
 
-focusOverlay.addEventListener('click',()=>closeForm(formViewClient));
+focusOverlay.addEventListener('click',()=>closeForm(formClientView));
 
 function populateViewForm(row){
-    const nombreInput = formViewClient.querySelector('#nombre');
-    const apellidoInput = formViewClient.querySelector('#apellido');
-    const numeroTelefonoInput = formViewClient.querySelector('#numeroTelefono');
-    const direccionInput = formViewClient.querySelector('#direccion');    
+    const nombreInput = formClientView.querySelector('#nombre');
+    const apellidoInput = formClientView.querySelector('#apellido');
+    const numeroTelefonoInput = formClientView.querySelector('#numeroTelefono');
+    const direccionInput = formClientView.querySelector('#direccion');    
 
     nombreInput.value = row.querySelector('#colNombre').textContent;
     apellidoInput.value = row.querySelector('#colApellido').textContent;
@@ -178,13 +178,23 @@ function populateViewForm(row){
     direccionInput.value = row.querySelector('#colUbicacion').textContent;
 }
 
+//Edit Client
+
+const formClientEdit = document.getElementById("formClientEdit");
 
 
-document.getElementById("formViewClient").addEventListener('submit',function(e){e.preventDefault();editClient();});
-function editClient(){
+document.getElementById("formBtnClientView").addEventListener('click', ()=>populateEditForm(formClientView));
+focusOverlay.addEventListener('click',()=>closeForm(formClientEdit));
 
-    
 
+function populateEditForm(formView){
+
+    formClientEdit.querySelector('#nombre').value = formView.querySelector('#nombre').value;
+    formClientEdit.querySelector('#apellido').value = formView.querySelector('#apellido').value;
+    formClientEdit.querySelector('#numeroTelefono').value = formView.querySelector('#numeroTelefono').value;
+    formClientEdit.querySelector('#direccion').value = formView.querySelector('#direccion').value;
+    closeForm(formClientView);
+    openForm(formClientEdit);
 }
 
 
