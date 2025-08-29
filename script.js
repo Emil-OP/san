@@ -152,29 +152,35 @@ function registerClient(){
 }
 
 
-//Edit Client
+//View Client
 
-const formEditClient = document.getElementById("formEditClient");
+const formViewClient = document.getElementById("formViewClient");
 
 document.getElementById("dataTableClientes").addEventListener('click', function(event) {
     const row = event.target.closest('.dataTableRow');
     if (row) {
-        populateEditForm(row);//This doesn't work need to figure out how to get the info from row on the text fields in formEditClient.
-        openForm(formEditClient);
+        populateViewForm(row);
+        openForm(formViewClient);
     }
 });
 
-focusOverlay.addEventListener('click',()=>closeForm(formEditClient));
+focusOverlay.addEventListener('click',()=>closeForm(formViewClient));
 
-function populateEditForm(row){
-    
-    
+function populateViewForm(row){
+    const nombreInput = formViewClient.querySelector('#nombre');
+    const apellidoInput = formViewClient.querySelector('#apellido');
+    const numeroTelefonoInput = formViewClient.querySelector('#numeroTelefono');
+    const direccionInput = formViewClient.querySelector('#direccion');    
 
-
+    nombreInput.value = row.querySelector('#colNombre').textContent;
+    apellidoInput.value = row.querySelector('#colApellido').textContent;
+    numeroTelefonoInput.value = row.querySelector('#colTelefono').textContent;
+    direccionInput.value = row.querySelector('#colUbicacion').textContent;
 }
 
 
-document.getElementById("formEditClient").addEventListener('submit',function(e){e.preventDefault();editClient();});
+
+document.getElementById("formViewClient").addEventListener('submit',function(e){e.preventDefault();editClient();});
 function editClient(){
 
     

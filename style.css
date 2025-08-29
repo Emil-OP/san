@@ -350,6 +350,12 @@ body{
     color:var(--primary-color);
 }
 
+.formLabelView{
+    transform: translateY(-1.5rem);
+    font-size:0.8em;
+    color:var(--primary-color);
+}
+
 @media (orientation: portrait){  
     
     #colSanes,#colUbicacion,#colApellido{
