@@ -1,3 +1,4 @@
+<?php header('Content-Type: text/html; charset=utf-8'); ?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -48,7 +49,7 @@
             <div class="mainContent flexColumn">
                 <table class = "dataTable">
                     <thead>
-                        <tr class="dataTableRow dataTableHeader">
+                        <tr class="dataTableHeader">
                             <th class="dataTableHeaderItem" id="colNombre" style="border-top-left-radius: 1rem;">Nombre</th>
                             <th class="dataTableHeaderItem" id="colApellido">Apellido</th>
                             <th class="dataTableHeaderItem" id="colTelefono">Telefono</th>
@@ -57,7 +58,7 @@
                             <th class="dataTableHeaderItem" id="colUbicacion" style="border-top-right-radius: 1rem;">Ubicacion</th>
                         </tr>
                     </thead>
-                    <tbody class="dataTableBody" id="tableClientes">
+                    <tbody class="dataTableBody" id="dataTableClientes">
                         <td class="loading">Cargando clientes...</td>
                     </tbody>
                 </table>
@@ -75,6 +76,32 @@
         <form class="formContainer flexColumn" id="formNewClient">
             <div class="formTitle">
                 Registrar Cliente
+            </div>
+            <div class="formField">
+                <input class="txtField" type="text" id="nombre" name="nombre" required>
+                <label class="formLabel" for="name">Nombre</label>
+            </div>
+            <div class="formField">
+                <input class="txtField" type="text" id="apellido" name="apellido" required>
+                <label class="formLabel" for="apellido">Apellido</label>
+            </div>
+            <div class="formField">
+                <input class="txtField" type="tel" id="numeroTelefono" name="numeroTelefono" required>
+                <label class="formLabel" for="numeroTelefono">Número de Teléfono</label>
+            </div>
+            <div class="formField">
+                <input class="txtField" type="text" id="direccion" name="direccion" required>
+                <label class="formLabel" for="direccion">Dirección</label>
+            </div>
+            <button class="formBtn" id="formBtnClient" type="submit" >Registrar</button>
+            <div id="toastMessageClient" class="toastMessage"></div>
+        </form>
+
+        <!-- Client Edit form -->
+        
+        <form class="formContainer flexColumn" id="formEditClient">
+            <div class="formTitle">
+                Editar Cliente
             </div>
             <div class="formField">
                 <input class="txtField" type="text" id="nombre" name="nombre" required>

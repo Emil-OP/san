@@ -10,7 +10,7 @@ $result = $connection ->query($sqlSel);
 
 
 while($row = $result->fetch_assoc()){
-    $response['data'][] = array_map('utf8_encode', $row);
+    $response['data'][] = $row;
 }
     $response['success'] = true;
     echo json_encode($response, JSON_UNESCAPED_UNICODE);

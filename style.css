@@ -5,19 +5,19 @@
     --background-color: rgb(28, 29, 30);
     --accent-color: rgb(48, 48, 48);
     --line-color:rgb(28, 29, 30);
-    --font-family: 'Arial', sans-serif;
+    --font-family: 'Arial', sans-serif !important;
 }
 
 *{    
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    background-color: var(--background-color);
     color: var(--text-color);
     font-family: var(--font-family);
 }
 
 body{
+    background-color: var(--background-color);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -46,6 +46,11 @@ body{
     overflow-y: auto;
 }
 
+#dataTableClientes tr:hover{
+    background-color: rgba(255, 255, 255, 0.05);
+    cursor: pointer;
+}
+
 .dataTableItem{
     padding: 1rem;
     border-bottom: 1px solid var(--accent-color);
@@ -64,7 +69,6 @@ body{
     padding:1rem;
     
 }
-
 
 .flexRow{
     display: flex;

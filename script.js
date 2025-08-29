@@ -27,9 +27,9 @@ fetch('selectCliente.php')
             .then(res => res.json())
             .then(data => {
                 if (!data.success) throw new Error(data.error);
-                const tableBody = document.getElementById("tableClientes");
+                const tableBody = document.getElementById("dataTableClientes");
                 tableBody.innerHTML = data.data.map(cliente => `
-                <tr class="dataTableRow">
+                <tr class="dataTableRow" idPart="${cliente.idParticipante}">
                     <td class="dataTableItem" id="colNombre">${cliente.nombre}</td>
                     <td class="dataTableItem" id="colApellido">${cliente.apellido}</td>
                     <td class="dataTableItem" id="colTelefono">${cliente.numeroTelefono}</td>
@@ -41,31 +41,31 @@ fetch('selectCliente.php')
             })
             .catch(err => {
                 console.error(err);
-                document.getElementById("tableClientes").innerHTML = `
+                document.getElementById("dataTableClientes").innerHTML = `
                     <td class="error" colspan="3">${err.message}</td>
                 `;
             });
         }
 
-document.addEventListener("DOMContentLoaded", loadClients());
+document.addEventListener("DOMContentLoaded", loadClients);
 
 // Add button functionality
 
 const floatingAdd = document.getElementById("floatingAdd");
-const formContainer = document.getElementById("formNewClient");
+const formNewClient = document.getElementById("formNewClient");
 
-function openForm(){
-    formContainer.classList.add('open');
+function openForm(formClient){
+    formClient.classList.add('open');
     focusOverlay.classList.add('active');
 }
 
-    function closeForm(){
-    formContainer.classList.remove('open');
+    function closeForm(formClient){
+    formClient.classList.remove('open');
     focusOverlay.classList.remove('active');
 }
 
-floatingAdd.addEventListener('click', openForm);
-focusOverlay.addEventListener('click', closeForm);
+floatingAdd.addEventListener('click', () => openForm(formNewClient));
+focusOverlay.addEventListener('click', () => closeForm(formNewClient));
     
 
 // Search button visuals
@@ -103,7 +103,7 @@ function searchCliente(){
     var nombre, apellido, telefono;
     const floatingSearchInput = document.getElementById("floatingSearchInput");
     const filter = floatingSearchInput.value.toUpperCase();
-    const table = document.getElementById("tableClientes");
+    const table = document.getElementById("dataTableClientes");
     const rows = table.getElementsByTagName("tr");
     for (let i = 0; i < rows.length; i++) {
         nombre =  rows[i].getElementsByTagName("td")[0].textContent;
@@ -130,7 +130,6 @@ function registerClient(){
     formData.append('apellido', document.getElementById('apellido').value);
     formData.append('numeroTelefono', document.getElementById('numeroTelefono').value);
     formData.append('direccion', document.getElementById('direccion').value);
-
     const toastMessage = document.getElementById('toastMessageClient');
 
 
@@ -152,6 +151,35 @@ function registerClient(){
         })
 }
 
+
+//Edit Client
+
+const formEditClient = document.getElementById("formEditClient");
+
+document.getElementById("dataTableClientes").addEventListener('click', function(event) {
+    const row = event.target.closest('.dataTableRow');
+    if (row) {
+        populateEditForm(row);//This doesn't work need to figure out how to get the info from row on the text fields in formEditClient.
+        openForm(formEditClient);
+    }
+});
+
+focusOverlay.addEventListener('click',()=>closeForm(formEditClient));
+
+function populateEditForm(row){
+    
+    
+
+
+}
+
+
+document.getElementById("formEditClient").addEventListener('submit',function(e){e.preventDefault();editClient();});
+function editClient(){
+
+    
+
+}
 
 
  
