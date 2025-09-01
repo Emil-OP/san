@@ -1,0 +1,7 @@
+// Search function
+Edit clients
+//Register clients
+Delete/void clients
+//Sidebar
+//Database connection
+
